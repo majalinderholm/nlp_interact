@@ -130,3 +130,6 @@ dmypy.json
 
 # API Keys
 key_vision.json
+
+# Data
+/DataCollection
