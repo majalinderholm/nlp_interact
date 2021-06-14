@@ -3,6 +3,7 @@ from google.cloud import vision_v1 as vision
 from google.cloud.vision_v1 import types
 import pandas as pd
 
+#Method for performing OCR on an image
 def detect_text(img):
     # Open image
     with open(img, 'rb') as image_file:
@@ -17,6 +18,7 @@ def detect_text(img):
 
     return response
 
+#Get confidence of each letter classified
 def get_confidence(pages):
     for page in pages:
         for block in page.blocks:
@@ -41,7 +43,7 @@ client = vision.ImageAnnotatorClient()
 # Define file name and path
 # FILE_NAME = 'DSC_0104.NEF'
 # FOLDER_PATH = r'C:/Users/paw472/OneDrive - AFRY/Documents/Projects/nlp_interact/DataCollection/ValterSchytt-2-1962'
-FILE_NAME = 'IMG_4966.jpg'
+FILE_NAME = 'IMG_4972.jpg'
 FOLDER_PATH = r'C:/Users/paw472/OneDrive - AFRY/Documents/Projects/nlp_interact'
 response = detect_text(os.path.join(FOLDER_PATH, FILE_NAME))
 print(response.full_text_annotation.text)
