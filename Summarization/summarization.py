@@ -2,7 +2,7 @@ import os
 import openai
 
 #Access the API-key
-key = open("C:/Users/paw472/OneDrive - AFRY/Documents/Projects/nlp_interact/Keys/key_gpt3.txt", "r")
+key = open("Keys/key_gpt3.txt", "r")
 openai.api_key = key.read()
 
 #Open the file containing text that is about to be summarized
@@ -18,7 +18,7 @@ response = openai.Completion.create(
                                     top_p = 1.0,
                                     frequency_penalty = 0.0,
                                     presence_penalty = 0.0,
-                                    stop=["\n\"\"\"n"]
+                                    stop=["###"]
                                     )
 
 print(response.choices)
