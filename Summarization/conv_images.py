@@ -1,7 +1,7 @@
 from PIL import Image
 import os
 
-directory = r'C:/Users/paw472/OneDrive - AFRY/Documents/Projects/nlp_interact/DataCollection/ValterSchytt-2-1962'
+directory = r'DataCollection/ValterSchytt-2-1962'
 
 for filename in os.listdir(directory):
     if filename.endswith(".NEF"):

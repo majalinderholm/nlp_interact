@@ -133,3 +133,4 @@ dmypy.json
 
 # Data
 /DataCollection
+/prompts

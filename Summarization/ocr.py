@@ -34,17 +34,23 @@ def get_confidence(pages):
                     for symbol in word.symbols:
                         print('\tSymbol: {0} (confidence: {1}'.format(symbol.text, symbol.confidence))
 
+#Function for writing the machine written text to a txt-file
+def write_to_file(response):
+    file = io.open('Summarization/prompt.txt', 'w', encoding='utf-8')
+    file.write(response.full_text_annotation.text)
+    file.close()
+
+
 # Provide the API with the Google Cloud Vision API
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'C:/Users/paw472/OneDrive - AFRY\Documents/Projects/nlp_interact/key_vision.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'Keys/key_vision.json'
 
 # Initialize a Google Cloud Vision client
 client = vision.ImageAnnotatorClient()
 
 # Define file name and path
-# FILE_NAME = 'DSC_0104.NEF'
-# FOLDER_PATH = r'C:/Users/paw472/OneDrive - AFRY/Documents/Projects/nlp_interact/DataCollection/ValterSchytt-2-1962'
-FILE_NAME = 'IMG_4972.jpg'
-FOLDER_PATH = r'C:/Users/paw472/OneDrive - AFRY/Documents/Projects/nlp_interact'
+FILE_NAME = 'DSC_0870.NEF'
+FOLDER_PATH = r'DataCollection/unknown-unknown'
 response = detect_text(os.path.join(FOLDER_PATH, FILE_NAME))
-print(response.full_text_annotation.text)
-#get_confidence(response.full_text_annotation.pages)
+write_to_file(response)
+
+get_confidence(response.full_text_annotation.pages)
